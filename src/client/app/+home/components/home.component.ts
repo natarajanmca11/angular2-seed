@@ -1,13 +1,12 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 
-import {NameListService} from '../../shared/services/name-list.service';
+import {NameListService} from '../../shared/index';
 
 @Component({
   selector: 'sd-home',
-  moduleId: module.id,
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  templateUrl: 'app/+home/components/home.component.html',
+  styleUrls: ['app/+home/components/home.component.css'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class HomeComponent {

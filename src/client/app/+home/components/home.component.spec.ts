@@ -2,20 +2,20 @@ import {
   TestComponentBuilder,
   describe,
   expect,
-  injectAsync,
-  it
+  it,
+  inject
 } from 'angular2/testing';
 import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 import {HomeComponent} from './home.component';
-import {NameListService} from '../../shared/services/name-list.service';
+import {NameListService} from '../../shared/index';
 
 
 export function main() {
   describe('Home component', () => {
     it('should work',
-      injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.createAsync(TestComponent)
+      inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+        tcb.createAsync(TestComponent)
           .then(rootTC => {
             rootTC.detectChanges();
 
