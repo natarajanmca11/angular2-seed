@@ -47,10 +47,28 @@ gulp.task('build.prod', (done: any) =>
               'css-lint',
               'build.assets.prod',
               'build.html_css',
-              'copy.js.prod',
+              'copy.prod',
               'build.js.prod',
               'build.bundles',
               'build.bundles.app',
+              'minify.bundles',
+              'build.index.prod',
+              done));
+
+// --------------
+// Build prod.
+gulp.task('build.prod.exp', (done: any) =>
+  runSequence('clean.prod',
+              'tslint',
+              'css-lint',
+              'build.assets.prod',
+              'build.html_css',
+              'copy.prod',
+              'compile.ahead.prod',
+              'build.js.prod.exp',
+              'build.bundles',
+              'build.bundles.app.exp',
+              'minify.bundles',
               'build.index.prod',
               done));
 
@@ -68,9 +86,10 @@ gulp.task('build.test', (done: any) =>
 
 // --------------
 // Build test watch.
-gulp.task('build.test.watch', (done: any) =>
+gulp.task('test.watch', (done: any) =>
   runSequence('build.test',
               'watch.test',
+              'karma.watch',
               done));
 
 // --------------
@@ -116,7 +135,7 @@ gulp.task('serve.prod', (done: any) =>
 // Test.
 gulp.task('test', (done: any) =>
   runSequence('build.test',
-              'karma.start',
+              'karma.run',
               done));
 
 // --------------
@@ -131,4 +150,4 @@ gulp.task('clean.once', (done: any) => {
     util.log('Skipping clean on rebuild');
     done();
   }
-})
+});
