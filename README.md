@@ -58,7 +58,8 @@ $ npm run start.deving
 
 # dev build
 $ npm run build.dev
-# prod build
+# prod build, will output the production application in `dist/prod`
+# the produced code can be deployed (rsynced) to a remote server
 $ npm run build.prod
 
 # dev build of multiple applications (by default the value of --app is "app")
@@ -75,8 +76,9 @@ _Does not rely on any global dependencies._
 In order to start the seed with AoT use:
 
 ```bash
-# prod build with AoT compilation
-$ npm run build.prod.exp
+# prod build with AoT compilation, will output the production application in `dist/prod`
+# the produced code can be deployed (rsynced) to a remote server
+$ npm run build.prod.aot
 ```
 
 # Dockerization
@@ -176,7 +178,7 @@ Visit the [Wiki page](https://github.com/mgechev/angular-seed/wiki) of the proje
 
 # How to update?
 ```
-git remote add upstream https://github.com/mgechev/angular2-seed
+git remote add upstream https://github.com/mgechev/angular-seed
 git pull upstream master
 ```
 
@@ -537,39 +539,45 @@ Here are all the awesome guys who are helping to make the project's wiki even be
 35  Clayton K. N. Passos
 15  Shyam-Chen
 14  Vincent van Proosdij
+ 8  Robert van Kints
  8  Christian Dobert
  8  matthew harwood
- 8  Robert van Kints
- 6  ruffiem
  6  Ludovic HENIN
+ 6  ruffiem
  5  Attila Egyed
+ 4  hhubik
  4  Chris Kapilla
  4  davidgfolch
- 3  Brian Kotek
- 3  Stefan Schüller
- 3  Ezequiel Cicala
  3  Robert Stoll
+ 3  Brian Kotek
  3  Patrick Hillert
- 2  Dinsitro
- 2  Amal Shehu
+ 3  Ezequiel Cicala
+ 3  Stefan Schüller
  2  Brooke Smith
  2  Simon Hampton
- 2  Yannick Koehler
  2  Giovanni Candido da Silva
  2  Hank Ehly
- 2  hhubik
+ 2  Yannick Koehler
  2  Cy Klassen
+ 2  Amal Shehu
  2  Joshua Wiens
+ 2  Dinsitro
+ 2  Drake Wilson
+ 2  omerfarukyilmaz
  2  Nathan Walker
  2  valentin
  2  zealitude
- 2  Drake Wilson
+ 1  samuelfernandez
+ 1  silicakes
+ 1  zcsongor
  1  Adam Johannesmeyer
  1  陳彥澄
  1  Ameer Nuri
  1  Ankit Kamboj
  1  BouncingBit
+ 1  Charlie Hua
  1  Dang Tung
+ 1  EBIA
  1  Eddie Sun
  1  Enrico Secondulfo
  1  Eugene Serkin
@@ -577,6 +585,8 @@ Here are all the awesome guys who are helping to make the project's wiki even be
  1  Ishara Samantha
  1  Jack Morrissey
  1  Jesper Rønn-Jensen
+ 1  Kirill Zdornyy
+ 1  Marc-André Barbeau
  1  Myrmex
  1  Pol Stafford
  1  Raphael Schmitt
@@ -585,6 +595,7 @@ Here are all the awesome guys who are helping to make the project's wiki even be
  1  Simon Altschuler
  1  Sylvain Francois
  1  The Ult
+ 1  Valentyn Yakymenko
  1  Yonet
  1  ganesansays
  1  gforceg
@@ -592,10 +603,6 @@ Here are all the awesome guys who are helping to make the project's wiki even be
  1  kiuka
  1  mcchae7
  1  neridonk
- 1  omerfarukyilmaz
- 1  samuelfernandez
- 1  silicakes
- 1  zcsongor
 ```
 
 # Change Log
