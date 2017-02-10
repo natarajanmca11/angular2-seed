@@ -267,7 +267,7 @@ export class SeedConfig {
    * The name of the bundle file to includes all CSS files.
    * @type {string}
    */
-  CSS_PROD_BUNDLE = 'main.css';
+  CSS_PROD_BUNDLE = 'main';
 
   /**
    * The name of the bundle file to include all JavaScript shims.
@@ -301,12 +301,25 @@ export class SeedConfig {
   ENABLE_SCSS = ['true', '1'].indexOf(`${process.env.ENABLE_SCSS}`.toLowerCase()) !== -1 || argv['scss'] || false;
 
   /**
+   * Enable tslint emit error by setting env variable FORCE_TSLINT_EMIT_ERROR
+   * @type {boolean}
+   */
+  FORCE_TSLINT_EMIT_ERROR = !!process.env.FORCE_TSLINT_EMIT_ERROR;
+
+  /**
+   * Extra paths for the gulp process to watch for to trigger compilation.
+   * @type {string[]}
+   */
+  EXTRA_WATCH_PATHS: string[] = [];
+
+  /**
    * The list of NPM dependcies to be injected in the `index.html`.
    * @type {InjectableDependency[]}
    */
   NPM_DEPENDENCIES: InjectableDependency[] = [
-    { src: 'zone.js/dist/zone.js', inject: 'libs' },
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
+    { src: 'zone.js/dist/zone.js', inject: 'libs' },
+    { src: 'zone.js/dist/long-stack-trace-zone.js', inject: 'libs', buildType: BUILD_TYPES.DEVELOPMENT },
     { src: 'intl/dist/Intl.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', buildType: BUILD_TYPES.DEVELOPMENT },
     // Temporary fix. See https://github.com/angular/angular/issues/9359
@@ -318,7 +331,7 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.CSS_SRC}/main.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
+    { src: `${this.CSS_DEST}/${this.CSS_PROD_BUNDLE}.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
   ];
 
   /**
@@ -518,7 +531,7 @@ export class SeedConfig {
      * @type {object}
      */
     'gulp-concat-css': {
-      targetFile: this.CSS_PROD_BUNDLE,
+      targetFile: `${this.CSS_PROD_BUNDLE}.css`,
       options: {
         rebaseUrls: false
       }
